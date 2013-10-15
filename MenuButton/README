@@ -19,12 +19,12 @@ Arguments
   
 3) Object handlers - Specifies event handlers: a key represents a Crafty event (e.g. "Click"), and the value of the key is the event handler.
   a)  e.g. Passing in this object ({"Click": function(){alert("Hello, World!");}, "KeyDown": function(e){alert("You pressed key " + e.keyCode + "!");}}
-      would cause the following to occur:
+      would cause something like the following to occur:
         i) var ent = Crafty.e("2D, etc, etc...")
-        ii) for (event in handlers) // Loop through keys (user-specified events)
-						{
-							ent.bind(event, handlers[event]); // Bind user-specified function for that event to that event on this entity
-						}
+        ii) 	for (event in handlers) // Loop through keys (user-specified events)
+		{
+			ent.bind(event, handlers[event]); // Bind user-specified function for that event to that event on this entity
+		}
 						
 4) Object btText - Object describing the text which the menu button should contain - properties:
   a) String text - The actual text to display
