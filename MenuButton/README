@@ -1,0 +1,40 @@
+MenuButton
+==========
+
+This is a component for the CraftyJS JavaScript game engine. It creates a custom menu button. It does this by creating two
+entities: a background entity and a text entity. The attributes of both objects are set by the user of the component using
+the .MenuButton function after including the component in an entity.
+
+Example usage
+=============
+var menubutton1 = Crafty.e("2D, MenuButton").MenuButton(bgattrs, colours, handlers, btText, renderType, tattrs, id);
+
+Arguments
+=========
+1) Object bgattrs - A list of attributes that can be passed to CraftyJS's .attr() - to be applied to the background
+
+2) Object colours - This has the properties:
+  a) bgColour - Background colour of button
+  b) textColour - Colour of text
+  
+3) Object handlers - Specifies event handlers: a key represents a Crafty event (e.g. "Click"), and the value of the key is the event handler.
+  a)  e.g. Passing in this object ({"Click": function(){alert("Hello, World!");}, "KeyDown": function(e){alert("You pressed key " + e.keyCode + "!");}}
+      would cause the following to occur:
+        i) var ent = Crafty.e("2D, etc, etc...")
+        ii) for (event in handlers) // Loop through keys (user-specified events)
+						{
+							ent.bind(event, handlers[event]); // Bind user-specified function for that event to that event on this entity
+						}
+						
+4) Object btText - Object describing the text which the menu button should contain - properties:
+  a) String text - The actual text to display
+  b) Object font - Describes the text's font - should be an object which can be passed to Crafty.textFont();
+  
+5) String renderType - The way in which Crafty should render the button
+  a) Either "Canvas" or "DOM"
+  
+6) Object tattrs - Text attributes {x: $x, y: $y, colour: "$colour", etc...}
+
+7) Number id - An integer describing this button's code - to allow the user to specify handlers for this button.
+  a)  The handlers are called with a single parameter - the ID of the button that was clicked (the ID is the value
+      which the user gave, which is stored internally).
